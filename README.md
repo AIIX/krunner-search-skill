@@ -1,11 +1,11 @@
-# mycroft-krunner-skill
+# krunner-search-skill
 This skill integrates Plasma 5 Krunner with Mycroft which enables users to search their local desktop for files, images, recent documents, bookmarks and utilize other krunner plugins.
 
 #### Installation of skill:
 * Download or Clone Git
 * Create /opt/mycroft/skills folder if it does not exist
-* Extract Downloaded Skill into a folder. "mycroft-krunner-skill". (Clone does not require this step)
-* Copy the mycroft-krunner-skill folder to /opt/mycroft/skills/ folder
+* Extract Downloaded Skill into a folder. "krunner-search-skill". (Clone does not require this step)
+* Copy the krunner-search-skill folder to /opt/mycroft/skills/ folder
 
 #### Installation of requirements:
 ##### Fedora: 
@@ -32,6 +32,12 @@ This skill integrates Plasma 5 Krunner with Mycroft which enables users to searc
 
 ###### Bookmarks
 - "Hey Mycroft, search the computer for bookmarks "
+
+###### Calculator(basic only)
+- "Hey Mycroft, calculate 2 plus 2"
+- "Hey Mycroft, calculate 2 minus 2"
+- "Hey Mycroft, calculate 2 times 2"
+- "Hey Mycroft, calculate 2 divided by 2"
 
 ## Current state
 
