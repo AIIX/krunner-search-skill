@@ -1,6 +1,7 @@
 import sys
 import dbus
 import re
+import operator
 from traceback import print_exc
 from os.path import dirname
 from adapt.intent import IntentBuilder
@@ -62,18 +63,26 @@ class KrunnerPlasmaDesktopSkill(MycroftSkill):
         searchString = utterance
         numbers = [int(x) for x in re.split('minus|plus|times|divided by|multiply by|multiply|add|subtract|divide by', searchString)]
         operations = re.findall('(minus|plus|times|divided by|multiply by|multiply|add|subtract|divide by)', searchString)
-        if operations[0] == "plus" or "add":
+        
+        if operations[0] == "plus":
             cal = (str(numbers[0]) + "+" + str(numbers[1]))
             self.sendcalc(cal)
-        elif operations[0] == "minus" or "subtract":
+            res = operator.add(numbers[0], numbers[1])
+            self.speak("The answer is " + str(res))
+        elif operations[0] == "minus":
             cal = (str(numbers[0]) + "-" + str(numbers[1]))
-            self.sendcalc(cal)
-        elif operations[0] == "times" or "multiply" or "multiply by":
+            res = operator.sub(numbers[0], numbers[1])
+            self.speak("The answer is " + str(res))
+        elif operations[0] == "times":
             cal = (str(numbers[0]) + "*" + str(numbers[1]))
             self.sendcalc(cal)
-        elif operations[0] == "divided by" or "divide by":
+            res = operator.mul(numbers[0], numbers[1])
+            self.speak("The answer is " + str(res))
+        elif operations[0] == "divided by":
             cal = (str(numbers[0]) + "/" + str(numbers[1]))
             self.sendcalc(cal)
+            res = operator.truediv(numbers[0], numbers[1])
+            self.speak("The answer is " + str(res))
         else:
             self.speak("Math operation not found supported operations are plus, minus, times or divided by")
         
@@ -81,7 +90,8 @@ class KrunnerPlasmaDesktopSkill(MycroftSkill):
         bus = dbus.SessionBus()
         remote_object = bus.get_object("org.kde.krunner","/App") 
         remote_object.query(cal + ' ', dbus_interface = "org.kde.krunner.App")
-    
+
+
     def stop(self):
         pass
 
