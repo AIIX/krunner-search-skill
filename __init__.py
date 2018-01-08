@@ -1,5 +1,6 @@
 import sys
 import dbus
+import re
 from traceback import print_exc
 from os.path import dirname
 from adapt.intent import IntentBuilder
@@ -29,6 +30,10 @@ class KrunnerPlasmaDesktopSkill(MycroftSkill):
         krunner_plasma_recentskill_intent = IntentBuilder("RecentFilesIntent").\
             require("RecentFileKeyword").build()
         self.register_intent(krunner_plasma_recentskill_intent, self.handle_krunner_plasma_recentskill_intent)
+        
+        krunner_plasma_calculateskill_intent = IntentBuilder("CalculateIntent").\
+            require("CalculateKeyword").build()
+        self.register_intent(krunner_plasma_calculateskill_intent, self.handle_krunner_plasma_calculateskill_intent)
 
     def handle_krunner_plasma_desktopskill_intent(self, message):
         utterance = message.data.get('utterance').lower()
@@ -49,6 +54,33 @@ class KrunnerPlasmaDesktopSkill(MycroftSkill):
         remote_object.query('recent' + ' ', dbus_interface = "org.kde.krunner.App")
         
         self.speak_dialog("krunner.recent")
+        
+    def handle_krunner_plasma_calculateskill_intent(self, message):
+        utterance = message.data.get('utterance').lower()
+        utterance = utterance.replace(
+                message.data.get('CalculateKeyword'), '')
+        searchString = utterance
+        numbers = [int(x) for x in re.split('minus|plus|times|divided by|multiply by|multiply|add|subtract|divide by', searchString)]
+        operations = re.findall('(minus|plus|times|divided by|multiply by|multiply|add|subtract|divide by)', searchString)
+        if operations[0] == "plus" or "add":
+            cal = (str(numbers[0]) + "+" + str(numbers[1]))
+            self.sendcalc(cal)
+        elif operations[0] == "minus" or "subtract":
+            cal = (str(numbers[0]) + "-" + str(numbers[1]))
+            self.sendcalc(cal)
+        elif operations[0] == "times" or "multiply" or "multiply by":
+            cal = (str(numbers[0]) + "*" + str(numbers[1]))
+            self.sendcalc(cal)
+        elif operations[0] == "divided by" or "divide by":
+            cal = (str(numbers[0]) + "/" + str(numbers[1]))
+            self.sendcalc(cal)
+        else:
+            self.speak("Math operation not found supported operations are plus, minus, times or divided by")
+        
+    def sendcalc(self, cal):
+        bus = dbus.SessionBus()
+        remote_object = bus.get_object("org.kde.krunner","/App") 
+        remote_object.query(cal + ' ', dbus_interface = "org.kde.krunner.App")
     
     def stop(self):
         pass

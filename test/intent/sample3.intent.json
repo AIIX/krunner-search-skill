@@ -1,0 +1,7 @@
+{
+  "utterance": "calculate",
+  "intent_type": "CalculateIntent",
+  "intent": {
+    "CalculateKeyword": ""
+  }
+}
