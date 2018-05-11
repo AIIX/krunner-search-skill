@@ -42,8 +42,7 @@ class KrunnerPlasmaDesktopSkill(MycroftSkill):
         bus = dbus.SessionBus()
         remote_object = bus.get_object("org.kde.krunner", "/App")
         remote_object.query(
-            searchString + ' ', dbus_interface="org.kde.krunner.App")
-
+                searchString + ' ', dbus_interface="org.kde.krunner.App")
         self.speak_dialog("krunner.search", data={'Query': searchString})
 
     @intent_handler(IntentBuilder("RecentFilesIntent").
