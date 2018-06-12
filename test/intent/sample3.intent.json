@@ -2,6 +2,6 @@
   "utterance": "calculate",
   "intent_type": "CalculateIntent",
   "intent": {
-    "CalculateKeyword": ""
+    "CalculateKeyword": "two plus two"
   }
 }
