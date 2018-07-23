@@ -1,7 +1,7 @@
 {
-  "utterance": "search",
+  "utterance": "search this computer for mycroft",
   "intent_type": "KrunnerKeywordIntent",
   "intent": {
-    "KrunnerPlasmaDesktopSkillKeyword": "this computer for"
+    "KrunnerPlasmaDesktopSkillKeyword": "search this computer for"
   }
 }
