@@ -1,26 +1,23 @@
-## krunner-search-skill
-This skill integrates Plasma 5 Krunner with Mycroft which enables users to search their local desktop for files, images, recent documents, bookmarks and utilize other krunner plugins.
+# <img src='https://rawgithub.com/FortAwesome/Font-Awesome/master/advanced-options/raw-svg/solid/search.svg' card_color='#4E5687' width='50' height='50' style='vertical-align:bottom'/> Krunner Search
+Krunner enables users to search their local desktop for files, images, recent documents, bookmarks and utilize other krunner plugins.
 
-## Description:
-Search for files, images, music, documents locally using the powerfull krunner plasma feature, also see your recent documents or files and user other krunner plugins like calculate etc..
+## About 
+Search for files, images, music, documents locally using the powerful Krunner Plasma desktop feature, also see your recent documents or files and user other plugins like calculate etc
 
-## Examples: 
-###### General Search
-- "Hey Mycroft, search this computer for 'Your Filename' "
-- "Hey Mycroft, find file 'Your Filename' "
+## Examples 
+* "Hey Mycroft, search this computer for 'Filename/Application' "
+* "Hey Mycroft, display recent documents"
+* "Hey Mycroft, search the computer for bookmarks"
+* "Hey Mycroft, calculate 2 plus 2"
 
-###### Recent Documents
-- "Hey Mycroft, display recent documents "
-- "Hey Mycroft, display recent files "
+## Credits 
+Aditya Mehra (@AIIX)
 
-###### Bookmarks
-- "Hey Mycroft, search the computer for bookmarks "
+## Supported Devices 
+platform_plasmoid 
 
-###### Calculator(basic only)
-- "Hey Mycroft, calculate 2 plus 2"
-- "Hey Mycroft, calculate 2 minus 2"
-- "Hey Mycroft, calculate 2 times 2"
-- "Hey Mycroft, calculate 2 divided by 2"
+## Category
+**Productivity**
 
-## Credits:
-Aix (Aix@outlook.com)
+## Tags
+#desktop #kde #krunner #control #plasma #search #bookmarks #recent #documents
