@@ -92,7 +92,7 @@ class KrunnerPlasmaDesktopSkill(MycroftSkill):
             res = operator.truediv(numbers[0], numbers[1])
             self.speak("The answer is " + str(res))
         else:
-            self.speak("Math operation not found supported operations are plus, minus, times or divided by")
+            self.speak("Math operation not found. Supported operations are plus, minus, times or divided by")
 
     def sendcalc(self, cal):
         """
