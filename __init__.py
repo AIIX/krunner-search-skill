@@ -68,31 +68,31 @@ class KrunnerPlasmaDesktopSkill(MycroftSkill):
         utterance = utterance.replace(message.data.get('CalculateKeyword'), '')
         searchString = utterance
         numbers = [int(x) for x in re.split(
-            'minus|plus|times|divided by|multiply by|multiply|add|subtract|divide by', searchString)]
+            'minus|-|plus|\+|times|\*|divided by|/|multiply by|multiply|add|subtract|divide by', searchString)]
         operations = re.findall(
-            '(minus|plus|times|divided by|multiply by|multiply|add|subtract|divide by)', searchString)
+            '(minus|-|plus|\+|times|\*|divided by|/|multiply by|multiply|add|subtract|divide by)', searchString)
 
-        if operations[0] == "plus":
+        if operations[0] == "plus" or operations[0] == "+":
             cal = (str(numbers[0]) + "+" + str(numbers[1]))
             self.sendcalc(cal)
             res = operator.add(numbers[0], numbers[1])
             self.speak("The answer is " + str(res))
-        elif operations[0] == "minus":
+        elif operations[0] == "minus" or operations[0] == "-":
             cal = (str(numbers[0]) + "-" + str(numbers[1]))
             res = operator.sub(numbers[0], numbers[1])
             self.speak("The answer is " + str(res))
-        elif operations[0] == "times":
+        elif operations[0] == "times" or operations[0] == "*":
             cal = (str(numbers[0]) + "*" + str(numbers[1]))
             self.sendcalc(cal)
             res = operator.mul(numbers[0], numbers[1])
             self.speak("The answer is " + str(res))
-        elif operations[0] == "divided by":
+        elif operations[0] == "divided by" or operations[0] == "/":
             cal = (str(numbers[0]) + "/" + str(numbers[1]))
             self.sendcalc(cal)
             res = operator.truediv(numbers[0], numbers[1])
             self.speak("The answer is " + str(res))
         else:
-            self.speak("Math operation not found supported operations are plus, minus, times or divided by")
+            self.speak("Math operation not found. Supported operations are plus, minus, times or divided by")
 
     def sendcalc(self, cal):
         """
