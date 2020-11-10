@@ -9,6 +9,8 @@ Search for files, images, music, documents locally using the powerful Krunner Pl
 * "Hey Mycroft, display recent documents"
 * "Hey Mycroft, search the computer for bookmarks"
 * "Hey Mycroft, calculate 2 plus 2"
+* "Hey Mycroft, run blender"
+* "Hey Mycroft, start libreoffice"
 
 ## Credits 
 Aditya Mehra (@AIIX)
